@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Formulario de autenticación: </h1>
 	<form action="Controller?op=doLogin" method="post">
 	<%
 	String nom="";
