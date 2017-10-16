@@ -134,7 +134,8 @@ public class GestionCarrito {
 	public void eliminarTodoCarrito(String user) {
 		try(Connection cn=ds.getConnection();) {                       
             //Paso 2: Envio SQL
-       	 String sql="delete from carritos where idCliente=?";
+       	 //String sql="delete from carritos where idCliente=?";
+			String sql="delete from carritos";
             //creamos consulta preparada:
             PreparedStatement ps=cn.prepareStatement(sql);
             ps.setString(1, user);
