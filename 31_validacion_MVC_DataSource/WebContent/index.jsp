@@ -9,8 +9,7 @@
 <body>
 <h1>Formulario de autenticación: </h1>
 	<form action="Controller?op=doLogin" method="post">
-	<%
-	String nom="";
+	<%	String nom="";
 	Cookie[] ck=request.getCookies(); 
 	if (ck!=null) {
 		for(Cookie c:ck){
