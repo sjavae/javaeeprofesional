@@ -5,17 +5,14 @@ public class Carrito {
 	    private String titulo;
 	    private String autor;
 	    private double precio;
-	    private int paginas;
 	    private int idTema;
 	    
-		public Carrito(int isbn, String titulo, String autor, double precio, int paginas, int idTema) {
-			super();
+		public Carrito(int isbn, String titulo, String autor, double precio, int idTema) {
 			this.isbn = isbn;
 			this.titulo = titulo;
 			this.autor = autor;
 			this.precio = precio;
-			this.paginas = paginas;
-			this.idTema = idTema;
+			this.idTema=idTema;
 		}
 	    
 	    
@@ -51,22 +48,15 @@ public class Carrito {
 			this.precio = precio;
 		}
 
-		public int getPaginas() {
-			return paginas;
-		}
-
-		public void setPaginas(int paginas) {
-			this.paginas = paginas;
-		}
 
 		public int getIdTema() {
 			return idTema;
 		}
 
+
 		public void setIdTema(int idTema) {
 			this.idTema = idTema;
 		}
 
-
-	    
+		
 }

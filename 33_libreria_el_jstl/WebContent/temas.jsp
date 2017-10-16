@@ -13,7 +13,7 @@
 	<center>
             <h1>Seleccione Tema</h1>
             <br/><br/>
-		<form  action="Controller?op=doLibros" method="post">
+		<form  action="Controller?op=doLibros&user=${requestScope.user}" method="post">
 			<select name="tema">
 				<option value="0">Todos</option>
 				<c:set var="temas" value="${requestScope.temas}"/>

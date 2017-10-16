@@ -20,6 +20,7 @@ public class LoginAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url;
 		GestionClientes gestion=new GestionClientes();
+		String user=request.getParameter("user");
 		
 		if(gestion.estaRegistrado(request.getParameter("user"),request.getParameter("pwd"))){
 			
@@ -37,7 +38,7 @@ public class LoginAction extends HttpServlet {
 			
 			url="error.jsp";
 		}
-       
+		request.setAttribute("user", user);
         request.getRequestDispatcher(url).forward(request, response);
 	}
 	private void crearCookie(HttpServletResponse response, String valor){

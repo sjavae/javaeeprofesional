@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -22,6 +23,23 @@ public class GestionClientes {
 			e.printStackTrace();
 		}
         
+    }
+    
+    public int idCliente(String usr) {
+    	int id=0;
+    	try(Connection con=ds.getConnection()){
+			String sql="select idCliente from clientes where usuario="+usr;
+			Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery(sql);            
+            while(rs.next()){
+            	id=rs.getInt("idCliente");
+            }
+			
+    	}catch (SQLException e) {
+			// TODO: handle exception
+    		e.printStackTrace();
+		}
+    	return id;
     }
 	
 	public boolean estaRegistrado(String user, String pass) {

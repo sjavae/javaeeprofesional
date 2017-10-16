@@ -29,6 +29,12 @@ public class Controller extends HttpServlet {
                     case "doEliminar":
                     	url="EliminarAction";
                     	break;
+                    case "doEliminarTodo":
+                    	url="EliminarTodoAction";
+                    	break;
+                    case "doComprarAction":
+                    	url="FinalizarCompraAction";
+                    	break;
                     case "toRegistro":
                         url="registro.jsp";
                         break; 

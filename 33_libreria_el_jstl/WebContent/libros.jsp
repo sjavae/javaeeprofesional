@@ -11,6 +11,8 @@
 <body>
     
 <c:set var="libros" value="${requestScope.libros}"/>
+<c:set var="carrito" value="${requestScope.carritos}"/>
+<c:set var="cliente" value="${requestScope.clientes}"/>
 <c:choose>
 	<c:when test="${!empty libros}">
 		<table border="1">
@@ -21,7 +23,7 @@
 		    			<td>${lib.titulo}</td>
 						<td>${lib.autor}</td>
 						<td>${lib.precio}</td>
-						<td><a href="Controller?op=doComprar&isbn=${lib.isbn}" >Comprar</a></td>
+						<td><a href="Controller?op=doComprar&isbn=${lib.isbn}&tema=0" >Comprar</a></td>
 					</tr>
 		    	
 		    	</c:forEach>
@@ -32,27 +34,31 @@
 	</c:otherwise>
 </c:choose>
 <br/><br/>
-<a href="Controller?op=toTemas">Elige nuevo tema</a>
+<a href="TemasAction" >Elige nuevo tema</a>
 <br/><br/>
-<c:set var="carrito" value="${requestScope.carrito}"/>
 <c:choose>
 	<c:when test="${!empty carrito}">
 		<table border="1">
-		    <tr><th>Compra</th><th>Titulo</th><th>Autor</th><th>Precio</th></tr>
-		    	<c:forEach var="car" items="${carrito}">
+		    <tr><th>Eliminar</th><th>Titulo</th><th>Autor</th><th>Precio</th></tr>
+		    	<c:forEach var="car" items="${carritos}">
 		    		<tr>
-		    			<td><a href="Controller?op=doEliminar&isbn=${lib.isbn}" >Eliminar</a></td>
+		    			<td><a href="Controller?op=doEliminar&isbn=${car.isbn}&tema=0" >Eliminar</a></td>
 		    			<td>${car.titulo}</td>
 						<td>${car.autor}</td>
 						<td>${car.precio}</td>
 					</tr>
 		    	</c:forEach>
 		</table>
+		
+	<br/><br/>
+	<a href="Controller?op=doEliminarTodo&cliente&user=${requestScope.user}">Vaciar Carrito</a>
 	</c:when>
 	<c:otherwise>
 		<h2>El carrito está vacío</h2>
 	</c:otherwise>
 </c:choose>
+<br/><br/>
+<a href="Controller?op=doComprarTodo&user=${requestScope.user}">Finalizar Compra</a>
 <br/><br/>
 <a href="Controller?op=toLogin">Inicio</a>
 

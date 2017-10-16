@@ -23,6 +23,7 @@ public class TemasAction extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GestionTemas gtemas=new GestionTemas();
+		request.setAttribute("user", request.getParameter("user"));
 		request.setAttribute("temas", gtemas.obtenerTemas());
 		request.getRequestDispatcher("temas.jsp").forward(request, response);
 	}

@@ -20,6 +20,7 @@ import modelo.GestionLibros;
 public class LibrosAction extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String user=request.getParameter("user");
 		int idTema=Integer.parseInt(request.getParameter("tema"));
 		GestionLibros glibros=new GestionLibros();
 		List<Libro> libros;
@@ -29,6 +30,7 @@ public class LibrosAction extends HttpServlet {
 		else{
 			libros=glibros.recuperarLibros(idTema);
 		}
+		request.setAttribute("user", user);
 		request.setAttribute("libros", libros);
 		request.getRequestDispatcher("libros.jsp").forward(request, response);
 	}
